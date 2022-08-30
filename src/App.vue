@@ -1,10 +1,34 @@
 <template>
-  <nav>
+  <!-- <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  </nav> -->
+  <Header />
+  <div class="container">
+    <div class="sidemenu">
+      <SideMenu/>
+    </div>
+    <div class="contentContainer">
+      <router-view />
+    </div>
+  </div>
+  <Footer />
 </template>
+
+<script>
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
+import SideMenu from "./components/SideMenu.vue";
+export default {
+  name: "App",
+  components: {
+    Header,
+    Footer,SideMenu
+  },
+  props: [],
+  setup() {},
+};
+</script>
 
 <style>
 #app {
@@ -13,18 +37,30 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  width: 60%;
+  margin: auto;
+  background-color: blueviolet;
 }
 
-nav {
-  padding: 30px;
+.container {
+ display: flex;
+ flex-direction: row;
+
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+
+.contentContainer{
+  background: blue;
+  
+  flex: 1 0 auto; 
+  
+}
+.sidemenu {
+  flex: 1 0 auto; 
+ position: fixed;
+ background-color: red;
+ position: absolute;
+
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
